@@ -20,6 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setWindowFlags(Qt::WindowCloseButtonHint | Qt::WindowMinMaxButtonsHint);
+    ui->progressBar->setRange(0, 100);
     on_pushButton_3_clicked();
     ui->baud->addItem("921000");
     ui->baud->addItem("115200");
@@ -81,14 +82,20 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::rtr() {
     QString strresult = QString::fromLocal8Bit(process.readAllStandardOutput());
-    ui->progressBar->setRange(0, 100);
-    if (strresult.split('\n')[0].indexOf("Writing at ") > -1) {
-        QString ps = (strresult.split(' ')[3]).remove(0, 1);
-        int p = ps.toInt();
-        if (p == 100) {
-            busy = false;
+    QStringList out = strresult.split('\n');
+    for (int i = 0; i < out.length(); i++) {
+        if (out[i].indexOf("Writing at ") > -1) {
+            QString ps = (strresult.split(' ')[3]).remove(0, 1);
+            int p = ps.toInt();
+            if (p == 100) {
+                busy = false;
+            }
+            ui->progressBar->setValue(p);
         }
-        ui->progressBar->setValue(p);
+        if (out[i].indexOf("MAC") > -1) {
+            QString mac = (out[i].split(' ')[1]);
+            ui->mac->setText(mac);
+        }
     }
 }
 
