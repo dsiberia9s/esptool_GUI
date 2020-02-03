@@ -34,3 +34,5 @@ QT += serialport
 
 RESOURCES += \
     res.qrc
+
+ICON = favicon.icns
