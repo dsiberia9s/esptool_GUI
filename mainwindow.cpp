@@ -22,14 +22,10 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowFlags(Qt::WindowCloseButtonHint | Qt::WindowMinMaxButtonsHint);
     ui->progressBar->setRange(0, 100);
     on_pushButton_3_clicked();
-    ui->baud->addItem("921000");
-    ui->baud->addItem("115200");
-    ui->baud->addItem("57600");
-    ui->baud->addItem("38400");
-    ui->baud->addItem("28800");
-    ui->baud->addItem("19200");
-    ui->baud->addItem("14400");
-    ui->baud->addItem("9600");
+    QStringList bauds = {"921000", "115200", "57600", "38400", "28800", "19200", "14400", "9600"};
+    for (int i = 0; i < bauds.length(); i++) {
+        ui->baud->addItem(bauds[i]);
+    }
 }
 
 MainWindow::~MainWindow()

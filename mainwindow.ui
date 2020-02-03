@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>esptool.py GUI by M5Stack 0.2</string>
+   <string>esptool.py GUI by M5Stack 0.3</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="layoutWidget">
@@ -119,7 +119,7 @@
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
