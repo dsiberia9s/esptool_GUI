@@ -23,6 +23,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->progressBar->setRange(0, 100);
     on_pushButton_3_clicked();
     QStringList bauds = {"921000", "115200", "57600", "38400", "28800", "19200", "14400", "9600"};
+    ui->sector->addItem("program", "0x10000");
+    ui->sector->addItem("SPIFFS", "0x290000");
     for (int i = 0; i < bauds.length(); i++) {
         ui->baud->addItem(bauds[i]);
     }
@@ -45,7 +47,7 @@ void MainWindow::on_pushButton_clicked()
     }
 
     QString port = ((ui->port->currentText()).indexOf("cu.") > -1) ? ("/dev/" + ui->port->currentText()) : ui->port->currentText();
-    QString sector = ui->sector->text();
+    QString sector = ui->sector->currentData().toString();
     QString baud = ui->baud->currentText();
 
     if (esptool == "") {

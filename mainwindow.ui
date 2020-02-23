@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>esptool.py GUI by M5Stack 0.3</string>
+   <string>esptool.py GUI by M5Stack 0.4</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="layoutWidget">
@@ -40,19 +40,6 @@
       <widget class="QLineEdit" name="fileName">
        <property name="readOnly">
         <bool>true</bool>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1" colspan="2">
-      <widget class="QLineEdit" name="sector">
-       <property name="focusPolicy">
-        <enum>Qt::StrongFocus</enum>
-       </property>
-       <property name="text">
-        <string>0x10000</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -103,6 +90,9 @@
         <string>O</string>
        </property>
       </widget>
+     </item>
+     <item row="2" column="1" colspan="2">
+      <widget class="QComboBox" name="sector"/>
      </item>
     </layout>
    </widget>
